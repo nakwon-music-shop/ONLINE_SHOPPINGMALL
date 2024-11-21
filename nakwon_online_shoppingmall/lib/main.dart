@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
-import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
       ),
-      home: RegistPage(),
+      home: HomePage(),
     );
   }
 }
