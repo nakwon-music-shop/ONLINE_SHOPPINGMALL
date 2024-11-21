@@ -19,7 +19,7 @@ class RegistPage extends StatelessWidget {
               children: [
                 Container(
                   width: double.infinity,
-                  height: 350,
+                  height: 300,
                   decoration: BoxDecoration(color: Colors.grey[300]),
                 ),
                 Container(
