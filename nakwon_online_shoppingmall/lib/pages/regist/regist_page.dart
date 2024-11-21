@@ -11,6 +11,27 @@ class RegistPage extends StatelessWidget {
         title: Text('Nakwon'),
         centerTitle: true,
       ),
+      body: Column(
+        children: [
+          Container(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 250,
+                  decoration: BoxDecoration(color: Colors.grey[300]),
+                ),
+                Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(color: Colors.grey[200]),
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
