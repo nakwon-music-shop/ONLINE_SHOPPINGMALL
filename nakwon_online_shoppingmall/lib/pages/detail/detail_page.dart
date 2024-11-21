@@ -23,16 +23,16 @@ class DetailPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start, // 요소들을 왼쪽 정렬
         children: [
           Image.network('앨범 커버 이미지 URL'), // 앨범 커버 이미지 표시
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               '상품 제목',
               style: TextStyle(
                   fontSize: 24, fontWeight: FontWeight.bold), // 제목 스타일 설정
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               '₩30,000',
               style: TextStyle(fontSize: 20, color: Colors.green), // 가격 스타일 설정
@@ -44,11 +44,11 @@ class DetailPage extends StatelessWidget {
               onPressed: () {
                 // 장바구니에 담는 기능
               },
-              child: Text('장바구니에 담기'),
+              child: const Text('장바구니에 담기'),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Text(
               '상품 설명 텍스트', // 상품 설명 텍스트 표시
             ),
