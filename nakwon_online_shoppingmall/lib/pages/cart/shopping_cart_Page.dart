@@ -30,17 +30,23 @@ class ShoppingCartState extends State<ShoppingCartPage> {
 
   void increaseQuantity(int index) {
     //수량 증가
-    setState(() {});
+    setState(() {
+      cartItems[index]['quantity']++;
+    });
   }
 
   void decreaseQuantity(int index) {
     //수량 감소
-    setState(() {});
+    setState(() {
+      cartItems[index]['quantity']--;
+    });
   }
 
   void removeCartList(int index) {
     //장바군 제거
-    setState(() {});
+    setState(() {
+      cartItems.removeAt(index);
+    });
   }
 
   @override
@@ -124,7 +130,7 @@ class ShoppingCartState extends State<ShoppingCartPage> {
                             Align(
                               alignment: Alignment.bottomCenter,
                               child: Text(
-                                '${item['price']}원',
+                                '${item['price'] * item['quantity']}원',
                               ),
                             ), //가격표시
                           ],
