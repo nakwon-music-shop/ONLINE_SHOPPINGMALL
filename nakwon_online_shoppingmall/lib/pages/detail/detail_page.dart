@@ -14,7 +14,7 @@ class DetailPage extends StatelessWidget {
             onPressed: () {
               // 장바구니 페이지로 이동하는 코드
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ShoppingCartPage()));
+                  MaterialPageRoute(builder: (context) => ShoppingCart()));
             },
           ),
         ],
