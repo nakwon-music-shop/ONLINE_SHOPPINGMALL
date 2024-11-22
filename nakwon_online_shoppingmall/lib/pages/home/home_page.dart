@@ -1,23 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
-
-class Product_Data {
-  String product;
-  String singer;
-  int price;
-  String image;
-  String pdDetail;
-
-  Product_Data(
-      {required this.product,
-      required this.singer,
-      required this.price,
-      required this.image,
-      required this.pdDetail});
-}
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -27,13 +13,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Product_Data> products = [
-    Product_Data(
-      product: '행운을 빌어요',
-      singer: '페퍼톤스',
-      price: 30000,
-      image: 'Url',
-      pdDetail: '인디가수 페퍼톤스의 앨범',
+  
+  List<Album> album = [
+    Album(
+      imagePath: '',
+      song: '행운을 빌어요',
+      artist: '페퍼톤스',
+      price: 30000
+    ),
+    Album(
+      imagePath: '',
+      song: '오디세이',
+      artist: '행로난',
+      price: 50000
+    ),
+    Album(
+      imagePath: '',
+      song: 'Lights behind you',
+      artist: 'SURL',
+      price: 40000
     ),
   ];
 
@@ -49,24 +47,25 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ShoppingCart()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ShoppingCart()));
               },
               icon: Icon(Icons.shopping_bag),
             ),
           ]),
       body: Center(
-          child: Padding(
-              padding: EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  search_bar(),
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
+              children: [
+                search_bar(),
                 Expanded(
                   child: ListView(
                     children: [
                       Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            productBox(),
+                            productBox(2),
                           ])
                     ],
                   ),
@@ -76,7 +75,8 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistPage()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => RegistPage()));
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.white,
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding productBox() {
+  Padding productBox(int i) {
     return Padding(
       padding: const EdgeInsets.all(20),
       child: Container(
@@ -104,19 +104,47 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
-                  Text("image"),
+                  Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.black, width: 1),
+                      ),
+                      width: 80,
+                      height: 80,
+                      child: Text("image")),
                   SizedBox(
                     width: 200,
                     child: Padding(
                       padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Text("Product", textAlign: TextAlign.start),
-                          Row(
-                            children: [
-                              Text("singer"),
-                              Text("Price", textAlign: TextAlign.start)
-                            ],
+                          Container(
+                            child: Text(
+                              album[i].song,
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 60,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      album[i].artist,
+                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      album[i].price.toString(),
+                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),
