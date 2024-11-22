@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
