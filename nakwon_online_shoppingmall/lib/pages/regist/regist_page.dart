@@ -27,6 +27,10 @@ class _RegistPageState extends State<RegistPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
+        title: Text(
+          'NakWon',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
       ),
       body: Column(
         children: [
