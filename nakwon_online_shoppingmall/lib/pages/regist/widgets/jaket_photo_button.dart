@@ -35,6 +35,11 @@ class _JaketPhotoButtonState extends State<JaketPhotoButton> {
               width: 220,
               height: 240,
               color: Colors.grey[300],
+              child: Icon(
+                Icons.photo_camera,
+                size: 50,
+                color: Colors.grey[700],
+              ),
             ),
           );
   }
