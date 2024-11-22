@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
-import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart.dart';
+import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
 
@@ -13,26 +13,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   List<Album> album = [
     Album(
-      imagePath: '',
-      song: '행운을 빌어요',
-      artist: '페퍼톤스',
-      price: 30000
-    ),
+        imagePath: '',
+        song: '행운을 빌어요',
+        artist: '페퍼톤스',
+        price: 30000,
+        description: ''),
     Album(
-      imagePath: '',
-      song: '오디세이',
-      artist: '행로난',
-      price: 50000
-    ),
+        imagePath: '',
+        song: '오디세이',
+        artist: '행로난',
+        price: 50000,
+        description: ''),
     Album(
-      imagePath: '',
-      song: 'Lights behind you',
-      artist: 'SURL',
-      price: 40000
-    ),
+        imagePath: '',
+        song: 'Lights behind you',
+        artist: 'SURL',
+        price: 40000,
+        description: ''),
   ];
 
   @override
@@ -47,8 +46,10 @@ class _HomePageState extends State<HomePage> {
           actions: [
             IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ShoppingCart()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ShoppingCartPage()));
               },
               icon: Icon(Icons.shopping_bag),
             ),
@@ -121,7 +122,8 @@ class _HomePageState extends State<HomePage> {
                           Container(
                             child: Text(
                               album[i].song,
-                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold),
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.bold),
                             ),
                           ),
                           SizedBox(
@@ -135,11 +137,15 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Text(
                                       album[i].artist,
-                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                     Text(
                                       album[i].price.toString(),
-                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
                                     )
                                   ],
                                 ),
