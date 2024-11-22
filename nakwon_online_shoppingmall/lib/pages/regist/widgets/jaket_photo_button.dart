@@ -3,35 +3,21 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class JaketPhotoButton extends StatefulWidget {
-  const JaketPhotoButton({
-    super.key,
-    required this.image,
-  });
+  JaketPhotoButton({super.key, this.image, required this.getImagePickerData});
 
-  final XFile? image;
-
+  XFile? image;
+  void Function() getImagePickerData;
   @override
   State<JaketPhotoButton> createState() => _JaketPhotoButtonState();
 }
 
 class _JaketPhotoButtonState extends State<JaketPhotoButton> {
-  Future<void> getImagePickerData(XFile? image) async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? pickedImage =
-        await picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        image = pickedImage;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return widget.image != null
         ? GestureDetector(
             onTap: () {
-              getImagePickerData(widget.image);
+              widget.getImagePickerData();
             },
             child: SizedBox(
               width: 220,
@@ -43,7 +29,7 @@ class _JaketPhotoButtonState extends State<JaketPhotoButton> {
           )
         : GestureDetector(
             onTap: () {
-              getImagePickerData(widget.image);
+              widget.getImagePickerData();
             },
             child: Container(
               width: 220,
