@@ -1,24 +1,31 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
 class BackgroundPhoto extends StatelessWidget {
-  const BackgroundPhoto({
-    super.key,
-    required this.image,
-  });
-
-  final XFile? image;
+  XFile? image;
+  BackgroundPhoto({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
     return image != null
-        ? SizedBox(
+        ? Container(
             width: double.infinity,
             height: 350,
-            child: FittedBox(
-                fit: BoxFit.fill,
-                child: Image.file(File(image!.path))), //가져온 이미지를 화면에 띄워주는 코드
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage(image!.path), fit: BoxFit.fill),
+            ),
+            child: ClipRRect(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                  color: Colors.black.withOpacity(0.1),
+                ),
+              ),
+            ),
           )
         : Container(
             width: double.infinity,

@@ -26,12 +26,27 @@ class _RegistPageState extends State<RegistPage> {
           Stack(
             alignment: Alignment.center,
             children: [
-              BackgroundPhoto(image: image),
-              JaketPhotoButton(image: image),
+              BackgroundPhoto(
+                image: image,
+              ),
+              JaketPhotoButton(
+                image: image,
+                getImagePickerData: getImagePickerData,
+              ),
             ],
           ),
         ],
       ),
     );
+  }
+
+  Future<void> getImagePickerData() async {
+    ImagePicker picker = ImagePicker();
+    XFile? pickedImage = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedImage != null) {
+      setState(() {
+        image = pickedImage;
+      });
+    }
   }
 }
