@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:nakwon_online_shoppingmall/pages/regist/widgets/background_photo.dart';
+import 'package:nakwon_online_shoppingmall/pages/regist/widgets/jaket_photo_button.dart';
 
 class RegistPage extends StatefulWidget {
   RegistPage({super.key});
@@ -12,65 +14,11 @@ class RegistPage extends StatefulWidget {
 class _RegistPageState extends State<RegistPage> {
   XFile? image;
 
-  Future<void> getImagePickerData() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? pickedImage =
-        await picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        image = pickedImage;
-      });
-    }
-  }
-
-  Widget backgroundPhoto() {
-    return image != null
-        ? SizedBox(
-            width: double.infinity,
-            height: 350,
-            child: FittedBox(
-                fit: BoxFit.fill,
-                child: Image.file(File(image!.path))), //가져온 이미지를 화면에 띄워주는 코드
-          )
-        : Container(
-            width: double.infinity,
-            height: 350,
-            color: Colors.grey[300],
-          );
-  }
-
-  Widget backgroundPhotoButton() {
-    return image != null
-        ? GestureDetector(
-            onTap: () {
-              getImagePickerData();
-            },
-            child: SizedBox(
-              width: 220,
-              height: 240,
-              child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: Image.file(File(image!.path))), //가져온 이미지를 화면에 띄워주는 코드
-            ),
-          )
-        : GestureDetector(
-            onTap: () {
-              getImagePickerData();
-            },
-            child: Container(
-              width: 220,
-              height: 240,
-              color: Colors.grey[300],
-            ),
-          );
-  }
-
   @override
   Widget build(Object context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text('Nakwon'),
         centerTitle: true,
       ),
       body: Column(
@@ -78,8 +26,8 @@ class _RegistPageState extends State<RegistPage> {
           Stack(
             alignment: Alignment.center,
             children: [
-              backgroundPhoto(),
-              backgroundPhotoButton(),
+              BackgroundPhoto(image: image),
+              JaketPhotoButton(image: image),
             ],
           ),
         ],
