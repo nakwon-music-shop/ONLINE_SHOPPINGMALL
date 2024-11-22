@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nakwon_online_shoppingmall/pages/order/order.dart';
+import 'package:nakwon_online_shoppingmall/album.dart';
 
 class MyOrdersPage extends StatefulWidget {
-  final List<Order> orders;
+  final List<Album> albums;
 
-  MyOrdersPage({required this.orders});
+  MyOrdersPage({required this.albums});
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
@@ -18,7 +18,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
         title: const Text('My Orders'),
       ),
       //구매목록이 비었는지 확인
-      body: widget.orders.isEmpty
+      body: widget.albums.isEmpty
           ? Center(
               child: const Text('구매목록이 없습니다.',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
@@ -28,9 +28,9 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               children: [
                 Expanded(
                     child: ListView.builder(
-                        itemCount: widget.orders.length,
+                        itemCount: widget.albums.length,
                         itemBuilder: (context, index) {
-                          return createOrderBox(widget.orders[index]);
+                          return createOrderBox(widget.albums[index]);
                         }))
               ],
             ),
@@ -38,7 +38,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
   }
 
   //구매 목록 박스 
-  Widget createOrderBox(Order order) {
+  Widget createOrderBox(Album album) {
     try {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
@@ -58,7 +58,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                   width: 90,
                   height: 90,
                   child: Image.asset(
-                    order.imagePath,
+                    album.imagePath,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -77,7 +77,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                           // 노래명 - 가수
                           Expanded(
                             child: Text(
-                              '${order.song} - ${order.singer}',
+                              '${album.song} - ${album.artist}',
                               style: const TextStyle(fontSize: 16),
                               softWrap: true, // 줄바꿈 허용
                               overflow: TextOverflow.visible, 
@@ -91,7 +91,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text('${order.price}원'),
+                          Text('${album.price}원'),
                           Text('결제완료'),
                         ],
                       ),
