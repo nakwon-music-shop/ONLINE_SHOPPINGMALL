@@ -44,6 +44,11 @@ class DetailPage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // 장바구니에 담는 기능
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('장바구니에 담겼습니다'),
+                  ),
+                );
               },
               child: const Text('장바구니에 담기'),
             ),
