@@ -46,30 +46,38 @@ class _RegistPageState extends State<RegistPage> {
           const SizedBox(
             height: 20,
           ),
-          // 가수 입력 영역
-          InfoTextfield(
-            data: '가수',
-            textFieldResult: widget.artist,
-            onTextChanged: onArtistChanged,
-          ),
-          // 상품명 입력 영역
-          InfoTextfield(
-            data: '상품명',
-            textFieldResult: widget.song,
-            onTextChanged: onSongChanged,
-          ),
-          // 상품 가격 입력 영역
-          InfoTextfield(
-            data: '상품 가격',
-            textFieldResult: widget.price,
-            onTextChanged: onPriceChanged,
-          ),
-          // 상품 설명 입력 영역
-          InfoTextfield(
-            data: '상품 설명',
-            textFieldResult: widget.description,
-            onTextChanged: onDescriptionChanged,
-          ),
+          Expanded(
+              child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // 가수 입력 영역
+                InfoTextfield(
+                  data: '가수',
+                  textFieldResult: widget.artist,
+                  onTextChanged: onArtistChanged,
+                ),
+                // 상품명 입력 영역
+                InfoTextfield(
+                  data: '상품명',
+                  textFieldResult: widget.song,
+                  onTextChanged: onSongChanged,
+                ),
+                // 상품 가격 입력 영역
+                InfoTextfield(
+                  data: '상품 가격',
+                  textFieldResult: widget.price,
+                  onTextChanged: onPriceChanged,
+                ),
+                // 상품 설명 입력 영역
+                InfoTextfield(
+                  data: '상품 설명',
+                  textFieldResult: widget.description,
+                  onTextChanged: onDescriptionChanged,
+                ),
+              ],
+            ),
+          )),
+          // 상품 등록하기 버튼
           ElevatedButton(
               onPressed: () {
                 if (widget.song != null &&
