@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/background_photo.dart';
+import 'package:nakwon_online_shoppingmall/pages/regist/widgets/info_textField.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/jaket_photo_button.dart';
 
 class RegistPage extends StatefulWidget {
@@ -35,6 +36,13 @@ class _RegistPageState extends State<RegistPage> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 20,
+          ),
+          InfoTextfield(data: '가수'),
+          InfoTextfield(data: '상품명'),
+          InfoTextfield(data: '상품 가격'),
+          InfoTextfield(data: '상품 설명'),
         ],
       ),
     );
