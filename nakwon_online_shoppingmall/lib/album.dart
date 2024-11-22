@@ -1,13 +1,14 @@
-class Order {
+class Album {
   final String imagePath;
   final String song;
-  final String singer;
+  final String artist;
   final int price;
 
-  Order({
+  Album({
     required this.imagePath,
     required this.song,
-    required this.singer,
+    required this.artist,
     required this.price,
   });
+
 }
