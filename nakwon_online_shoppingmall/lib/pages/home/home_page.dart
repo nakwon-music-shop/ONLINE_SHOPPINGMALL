@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
 
 class Product_Data {
   String product;
@@ -46,7 +48,9 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.black,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ShoppingCart()));
+              },
               icon: Icon(Icons.shopping_bag),
             ),
           ]),
@@ -56,24 +60,27 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 children: [
                   search_bar(),
-                  Expanded(
-                    child: ListView(
-                      children: [
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              productBox(),
-                            ])
-                      ],
-                    ),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            productBox(),
+                          ])
+                    ],
                   ),
-                  FloatingActionButton(
-                    onPressed: () {},
-                  child: Icon(Icons.add),
-                  backgroundColor: Colors.white,
-                  ) 
-                ],
-              ))),
+                ),
+              ],
+            )),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => RegistPage()));
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.white,
+      ),
     );
   }
 
