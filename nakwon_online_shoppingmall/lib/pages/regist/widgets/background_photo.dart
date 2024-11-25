@@ -11,6 +11,7 @@ class BackgroundPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return image != null
+        // 업로드한 이미지가 존재하면 이미지 출력
         ? Container(
             width: double.infinity,
             height: 350,
@@ -27,6 +28,7 @@ class BackgroundPhoto extends StatelessWidget {
               ),
             ),
           )
+        // 이미지를 업로드하지 않았으면 회색 박스 출력
         : Container(
             width: double.infinity,
             height: 350,
