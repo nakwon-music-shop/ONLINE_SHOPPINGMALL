@@ -13,7 +13,10 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'NakWon',
-          style: TextStyle(color: Colors.white), // AppBar의 글자 색상 설정
+          style: TextStyle(
+              fontFamily: "Inter-Italic",
+              fontWeight: FontWeight.w100,
+              color: Colors.white), // AppBar의 글자 색상 설정
         ),
         backgroundColor: Colors.black, // AppBar의 배경 색상 설정
         centerTitle: true, // 제목의 위치를 가운데로 설정
