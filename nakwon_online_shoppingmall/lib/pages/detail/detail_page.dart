@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
+import 'package:nakwon_online_shoppingmall/album.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+  final Album album; // Album 객체를 받기 위한 변수
+
+  const DetailPage({super.key, required this.album});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('NakWon'), // Appbar의 제목 설정
+        title: Text(
+          'NakWon',
+          style: TextStyle(color: Colors.white), // AppBar의 글자 색상 설정
+        ),
+        backgroundColor: Colors.black, // AppBar의 배경 색상 설정
+        centerTitle: true, // 제목의 위치를 가운데로 설정
         actions: [
           IconButton(
             icon: const Icon(Icons.shopping_cart), // 장바구니 아이콘 설정
             onPressed: () {
               // 장바구니 페이지로 이동하는 코드
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ShoppingCartPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ShoppingCartPage()));
             },
           ),
         ],
@@ -25,20 +31,21 @@ class DetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // 요소들을 왼쪽 정렬
         children: [
-          Image.network(''), // 앨범 커버 이미지 표시
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Image.network(album.imagePath), // 앨범 커버 이미지 표시
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              '상품 제목',
-              style: TextStyle(
+              album.song,
+              style: const TextStyle(
                   fontSize: 24, fontWeight: FontWeight.bold), // 제목 스타일 설정
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              '₩30,000',
-              style: TextStyle(fontSize: 20, color: Colors.green), // 가격 스타일 설정
+              '₩${album.price}',
+              style: const TextStyle(
+                  fontSize: 20, color: Colors.green), // 가격 스타일 설정
             ),
           ),
           Padding(
@@ -55,10 +62,10 @@ class DetailPage extends StatelessWidget {
               child: const Text('장바구니에 담기'),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              '상품 설명 텍스트', // 상품 설명 텍스트 표시
+              album.artist, // 가수 이름 표시
             ),
           ),
         ],
