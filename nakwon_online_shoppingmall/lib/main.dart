@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
+import 'package:nakwon_online_shoppingmall/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,9 +33,7 @@ class MyApp extends StatelessWidget {
     });
     return MaterialApp(
       title: 'Nakwon',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
-      ),
+      theme: theme,
       home: HomePage(),
     );
   }
