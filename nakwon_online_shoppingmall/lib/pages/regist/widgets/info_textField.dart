@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 
-class InfoTextfield extends StatelessWidget {
+class InfoTextfield extends StatefulWidget {
   String data;
+  var textFieldResult;
+  void Function(TextEditingController tec) onTextChanged;
 
-  InfoTextfield({super.key, required this.data});
+  InfoTextfield(
+      {super.key,
+      required this.data,
+      required this.textFieldResult,
+      required this.onTextChanged});
+
+  @override
+  State<InfoTextfield> createState() => _InfoTextfieldState();
+}
+
+class _InfoTextfieldState extends State<InfoTextfield> {
+  TextEditingController textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +27,7 @@ class InfoTextfield extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              data,
+              widget.data,
               style: const TextStyle(fontSize: 16),
             ),
           ),
@@ -22,18 +35,16 @@ class InfoTextfield extends StatelessWidget {
             height: 10,
           ),
           TextField(
+            controller: textController,
+            onChanged: (value) {
+              widget.onTextChanged(textController);
+            },
             decoration: InputDecoration(
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide:
                         BorderSide(width: 1.0, color: Colors.grey[300]!))),
           ),
-          // Container(
-          //   decoration: BoxDecoration(
-          //       border: Border.all(color: Colors.grey[300]!),
-          //       borderRadius: BorderRadius.circular(10)),
-          //   child: TextField(),
-          // ),
           const SizedBox(
             height: 10,
           )

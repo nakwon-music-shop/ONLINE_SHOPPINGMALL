@@ -14,8 +14,10 @@ class DetailPage extends StatelessWidget {
             icon: const Icon(Icons.shopping_cart), // 장바구니 아이콘 설정
             onPressed: () {
               // 장바구니 페이지로 이동하는 코드
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ShoppingCartPage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ShoppingCartPage()));
             },
           ),
         ],
