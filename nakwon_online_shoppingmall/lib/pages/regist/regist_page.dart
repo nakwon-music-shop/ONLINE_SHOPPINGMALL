@@ -29,7 +29,10 @@ class _RegistPageState extends State<RegistPage> {
         centerTitle: true,
         title: Text(
           'NakWon',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontFamily: "Inter-Italic",
+              fontWeight: FontWeight.w100,
+              color: Colors.white),
         ),
       ),
       // 상품 이미지가 들어가는 부분

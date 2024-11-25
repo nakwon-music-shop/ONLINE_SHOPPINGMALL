@@ -68,7 +68,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
           title: Text(
             'NakWon',
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(
+                fontFamily: "Inter-Italic",
+                fontWeight: FontWeight.w100,
+                color: Colors.white),
           ),
           backgroundColor: Colors.black,
           actions: [

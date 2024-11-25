@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
@@ -21,7 +20,10 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
       appBar: AppBar(
         title: const Text(
           'My Orders',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+              fontFamily: "Inter-Italic",
+              fontWeight: FontWeight.w100,
+              color: Colors.white),
         ),
         backgroundColor: Colors.black,
         actions: [

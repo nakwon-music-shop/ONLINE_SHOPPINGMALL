@@ -98,8 +98,9 @@ class ShoppingCartState extends State<ShoppingCartPage> {
         title: Text(
           'Cart',
           style: TextStyle(
-            color: Colors.white,
-          ),
+              fontFamily: "Inter-Italic",
+              fontWeight: FontWeight.w100,
+              color: Colors.white),
         ),
         backgroundColor: Colors.black,
       ),
