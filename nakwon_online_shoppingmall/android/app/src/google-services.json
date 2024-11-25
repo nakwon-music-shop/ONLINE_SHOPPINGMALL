@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "564651819326",
+    "project_id": "nakwon-music-shop-911b1",
+    "storage_bucket": "nakwon-music-shop-911b1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564651819326:android:b2fc8cc422d3650cbfec6f",
+        "android_client_info": {
+          "package_name": "com.example.nakwon_online_shoppingmall"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE_Jjh_oxh3KzvduyJ894l9GDPPTgqbCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
