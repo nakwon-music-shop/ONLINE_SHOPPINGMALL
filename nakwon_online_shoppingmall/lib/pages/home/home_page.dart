@@ -100,7 +100,11 @@ class _HomePageState extends State<HomePage> {
         child: GestureDetector(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => DetailPage()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailPage(
+                          album: album[i],
+                        )));
           },
           child: SizedBox(
             child: Padding(
