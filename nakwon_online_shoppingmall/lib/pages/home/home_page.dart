@@ -170,7 +170,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                       width: 80,
                       height: 80,
-                      child: Image.file(File(album[i].imagePath))),
+                      child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Image.file(File(album[i].imagePath)))),
                   SizedBox(
                     width: 200,
                     child: Padding(
