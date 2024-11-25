@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
 
+//구매목록 페이지
 class MyOrdersPage extends StatefulWidget {
   final List<Album> albums;
 
@@ -18,6 +19,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
       appBar: AppBar(
         title: const Text('My Orders'),
         actions: [
+          //appBar 홈페이지 이동 버튼
           IconButton(
             icon: const Icon(Icons.home), // 홈 아이콘
             onPressed: () {
@@ -33,10 +35,12 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
       ),
       //구매목록이 비었는지 확인
       body: widget.albums.isEmpty
+          //비어있을 경우 텍스트 출력
           ? Center(
               child: const Text('구매목록이 없습니다.',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             )
+            //비어있지 않은 경우 리스트뷰 생성
           : Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
