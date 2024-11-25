@@ -2,6 +2,7 @@
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page_List.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var fnumber = NumberFormat('###,###,###,###');
-
+  final List<Album> cartItems = [];
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +33,16 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: Colors.black,
           actions: [
             IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => ShoppingCartPage()));
-              },
-              icon: Icon(Icons.shopping_cart),color: Colors.white
-            ),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ShoppingCartPage(
+                                cartItems: cartItems,
+                              )));
+                },
+                icon: Icon(Icons.shopping_cart),
+                color: Colors.white),
           ]),
       body: Scrollbar(
         child: Center(
@@ -117,7 +120,10 @@ class _HomePageState extends State<HomePage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailPage(album: album[i])));
+                    builder: (context) => DetailPage(
+                          album: album[i],
+                          cartItems: cartItems,
+                        )));
           },
           child: SizedBox(
             child: Padding(
