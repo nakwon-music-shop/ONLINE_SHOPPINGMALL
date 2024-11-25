@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
@@ -13,6 +14,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var fnumber = NumberFormat('###,###,###,###');
+
   List<Album> album = [
     Album(
         imagePath: '',
@@ -30,6 +33,30 @@ class _HomePageState extends State<HomePage> {
         imagePath: '',
         song: 'Lights behind you',
         artist: 'SURL',
+        price: 40000,
+        description: ''),
+    Album(
+        imagePath: '',
+        song: '좋지 아니한가?',
+        artist: '유다빈밴드',
+        price: 15000,
+        description: ''),
+    Album(
+        imagePath: '',
+        song: '검정치마',
+        artist: 'LingLing',
+        price: 25000,
+        description: ''),
+    Album(
+        imagePath: '',
+        song: '각자의 밤',
+        artist: '나상현씨 밴드',
+        price: 40000,
+        description: ''),
+    Album(
+        imagePath: '',
+        song: 'APT.',
+        artist: 'ROSE, Bruno Mars',
         price: 40000,
         description: ''),
   ];
@@ -66,7 +93,8 @@ class _HomePageState extends State<HomePage> {
                       Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            productBox(2),
+                            for (int i = 0; i < album.length; i++)
+                              productBox(i),
                           ])
                     ],
                   ),
@@ -74,41 +102,64 @@ class _HomePageState extends State<HomePage> {
               ],
             )),
       ),
-      // 상품 등록 페이지 연결 버튼
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final returnAlbum = await Navigator.push(
-              context, MaterialPageRoute(builder: (context) => RegistPage()));
-          album.add(returnAlbum);
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.white,
-      ),
+      floatingActionButton: floatingbutton(),
+    );
+  }
+
+  FloatingActionButton floatingbutton() {
+    return FloatingActionButton(
+      onPressed: () {},
+      backgroundColor: Colors.white,
+      child: PopupMenuButton(
+          color: Colors.white,
+          child: Icon(Icons.add),
+          itemBuilder: (context) => <PopupMenuEntry>[
+                PopupMenuItem(
+                  onTap: () async {
+                    final returnAlbum = await Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => RegistPage()));
+                    album.add(returnAlbum);
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.add),
+                    title: Text('Add'),
+                  ),
+                ),
+                PopupMenuItem(
+                  onTap: () async {
+                    final returnAlbum = await Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => RegistPage()));
+                    album.add(returnAlbum);
+                  },
+                  child: ListTile(
+                    leading: Icon(Icons.shopping_cart_checkout_outlined),
+                    title: Text('구매목록'),
+                  ),
+                ),
+              ]),
     );
   }
 
   Padding productBox(int i) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(10),
       child: Container(
         height: 150,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.black, width: 3),
+          border: Border.all(color: Colors.black, width: 5),
         ),
         child: GestureDetector(
           onTap: () {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => DetailPage(
-                          album: album[i],
-                        )));
+                    builder: (context) => DetailPage(album: album[i])));
           },
           child: SizedBox(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
               child: Row(
                 children: [
                   Container(
@@ -125,11 +176,13 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(10),
                       child: Column(
                         children: [
-                          Container(
-                            child: Text(
-                              album[i].song,
-                              style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.bold),
+                          SizedBox(
+                            height: 28,
+                            child: FittedBox(
+                              child: Text(
+                                album[i].song,
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -141,14 +194,18 @@ class _HomePageState extends State<HomePage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                      album[i].artist,
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
+                                    SizedBox(
+                                      width: 100,
+                                      child: Text(
+                                        album[i].artist,
+                                        style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                     Text(
-                                      album[i].price.toString(),
+                                      fnumber.format(album[i].price),
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold),
@@ -184,7 +241,7 @@ class _HomePageState extends State<HomePage> {
           ),
           backgroundColor: WidgetStatePropertyAll(Colors.white),
           side: WidgetStateProperty.all(
-              BorderSide(color: Colors.black, width: 3)),
+              BorderSide(color: Colors.black, width: 5)),
         ));
   }
 }
