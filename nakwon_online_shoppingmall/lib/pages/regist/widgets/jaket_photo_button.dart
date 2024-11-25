@@ -15,6 +15,7 @@ class _JaketPhotoButtonState extends State<JaketPhotoButton> {
   @override
   Widget build(BuildContext context) {
     return widget.image != null
+        // 업로드한 이미지가 존재하면 이미지 출력
         ? GestureDetector(
             onTap: () {
               widget.getImagePickerData();
@@ -27,6 +28,7 @@ class _JaketPhotoButtonState extends State<JaketPhotoButton> {
                   child: Image.file(File(widget.image!.path))),
             ),
           )
+        // 이미지를 업로드하지 않았으면 회색 박스 출력
         : GestureDetector(
             onTap: () {
               widget.getImagePickerData();

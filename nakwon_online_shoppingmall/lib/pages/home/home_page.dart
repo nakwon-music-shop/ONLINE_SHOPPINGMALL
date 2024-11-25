@@ -4,6 +4,7 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
+import 'dart:io';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -118,7 +119,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       width: 80,
                       height: 80,
-                      child: Text("image")),
+                      child: Image.file(File(album[i].imagePath))),
                   SizedBox(
                     width: 200,
                     child: Padding(
