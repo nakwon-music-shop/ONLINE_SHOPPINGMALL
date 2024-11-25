@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nakwon_online_shoppingmall/album.dart';
 //AppBar, Column(CartList), ElevatedButton으로 구성
 //기본 폰트 : 16 + grey[700], padding 좌우로 20
 //AppBar (폰트 : Blackitalic + black)
@@ -8,7 +9,9 @@ import 'package:flutter/material.dart';
 //TODO 담은 상품 수량 가져오기
 
 class ShoppingCartPage extends StatefulWidget {
-  const ShoppingCartPage({super.key});
+  final List<Album> cartItems; // 인자로 받는 cartItems 정의
+
+  const ShoppingCartPage({super.key, required this.cartItems}); // 생성자에서 인자 받기
 
   @override
   State<ShoppingCartPage> createState() => ShoppingCartState();
