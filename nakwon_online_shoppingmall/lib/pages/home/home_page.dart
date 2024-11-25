@@ -74,10 +74,12 @@ class _HomePageState extends State<HomePage> {
               ],
             )),
       ),
+      // 상품 등록 페이지 연결 버튼
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          final returnAlbum = await Navigator.push(
               context, MaterialPageRoute(builder: (context) => RegistPage()));
+          album.add(returnAlbum);
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.white,
