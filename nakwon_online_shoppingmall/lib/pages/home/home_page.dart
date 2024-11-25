@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                     MaterialPageRoute(
                         builder: (context) => ShoppingCartPage()));
               },
-              icon: Icon(Icons.shopping_bag),
+              icon: Icon(Icons.shopping_cart),color: Colors.white
             ),
           ]),
       body: Center(
