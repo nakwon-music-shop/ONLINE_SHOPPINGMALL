@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});
@@ -25,7 +25,7 @@ class DetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // 요소들을 왼쪽 정렬
         children: [
-          Image.network('앨범 커버 이미지 URL'), // 앨범 커버 이미지 표시
+          Image.network(''), // 앨범 커버 이미지 표시
           const Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
