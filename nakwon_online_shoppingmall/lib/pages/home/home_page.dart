@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
@@ -169,7 +170,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       width: 80,
                       height: 80,
-                      child: Text("image")),
+                      child: Image.file(File(album[i].imagePath))),
                   SizedBox(
                     width: 200,
                     child: Padding(

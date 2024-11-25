@@ -98,7 +98,7 @@ class _RegistPageState extends State<RegistPage> {
                       Navigator.pop(
                           context,
                           Album(
-                              imagePath: 'imagePath',
+                              imagePath: image!.path,
                               song: widget.song!,
                               artist: widget.artist!,
                               price: widget.price!,
