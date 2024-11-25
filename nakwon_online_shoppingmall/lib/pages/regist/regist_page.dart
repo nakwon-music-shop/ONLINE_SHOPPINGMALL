@@ -25,11 +25,11 @@ class _RegistPageState extends State<RegistPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.black,
         centerTitle: true,
         title: Text(
           'NakWon',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
       // 상품 이미지가 들어가는 부분
