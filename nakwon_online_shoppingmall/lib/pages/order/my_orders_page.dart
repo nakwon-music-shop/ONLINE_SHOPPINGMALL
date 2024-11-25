@@ -1,12 +1,14 @@
+
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/order/widgets/order_box.dart';
 
 //구매목록 페이지
 class MyOrdersPage extends StatefulWidget {
   final List<Album> albums;
 
-  MyOrdersPage({this.albums = const[]});
+  MyOrdersPage({this.albums = const []});
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
@@ -17,7 +19,11 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Orders'),
+        title: const Text(
+          'My Orders',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
         actions: [
           //appBar 홈페이지 이동 버튼
           IconButton(
@@ -40,7 +46,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               child: const Text('구매목록이 없습니다.',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             )
-            //비어있지 않은 경우 리스트뷰 생성
+          //비어있지 않은 경우 리스트뷰 생성
           : Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -53,83 +59,5 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               ],
             ),
     );
-  }
-
-  //구매 목록 박스
-  Widget createOrderBox(Album album) {
-    try {
-      return Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-        child: Container(
-          width: double.infinity,
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: Colors.black, // 테두리 색상
-              width: 2.0, // 테두리 굵기
-            ),
-          ),
-          child: Row(
-            children: [
-              // 이미지 표시할 박스
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: SizedBox(
-                  width: 90,
-                  height: 90,
-                  child: Image.asset(
-                    album.imagePath,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-              // 구매한 음반 정보 표시
-              Expanded(
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const SizedBox(),
-                      Row(
-                        children: [
-                          // 노래명 - 가수
-                          Expanded(
-                            child: Text(
-                              '${album.song} - ${album.artist}',
-                              style: const TextStyle(fontSize: 16),
-                              softWrap: true, // 줄바꿈 허용
-                              overflow: TextOverflow.visible,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(),
-                      // 가격정보 - 결제완료
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text('${album.price}원'),
-                          Text('결제완료'),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      );
-    } catch (e) {
-      print('An error occurred: $e');
-      return Column(
-        children: [const Text('데이터를 불러오는데 실패했습니다.')],
-      );
-    }
   }
 }
