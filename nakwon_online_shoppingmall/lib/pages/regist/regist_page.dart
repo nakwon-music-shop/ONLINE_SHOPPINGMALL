@@ -32,6 +32,7 @@ class _RegistPageState extends State<RegistPage> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
+      // 상품 이미지가 들어가는 부분
       body: Padding(
         padding: const EdgeInsets.all(5),
         child: Column(
@@ -52,6 +53,7 @@ class _RegistPageState extends State<RegistPage> {
             const SizedBox(
               height: 20,
             ),
+            // 상품 정보를 입력하는 scrollView
             Expanded(
                 child: SingleChildScrollView(
               child: Column(
