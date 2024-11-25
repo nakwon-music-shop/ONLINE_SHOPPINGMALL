@@ -85,26 +85,28 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.shopping_cart),color: Colors.white
             ),
           ]),
-      body: Center(
-        child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                search_bar(),
-                Expanded(
-                  child: ListView(
-                    children: [
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            for (int i = 0; i < album.length; i++)
-                              productBox(i),
-                          ])
-                    ],
+      body: Scrollbar(
+        child: Center(
+          child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  search_bar(),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              for (int i = 0; i < album.length; i++)
+                                productBox(i),
+                            ])
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )),
+                ],
+              )),
+        ),
       ),
       floatingActionButton: floatingbutton(),
     );
