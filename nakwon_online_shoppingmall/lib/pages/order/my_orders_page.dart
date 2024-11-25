@@ -5,7 +5,7 @@ import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
 class MyOrdersPage extends StatefulWidget {
   final List<Album> albums;
 
-  MyOrdersPage({required this.albums});
+  MyOrdersPage({this.albums = const[]});
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
