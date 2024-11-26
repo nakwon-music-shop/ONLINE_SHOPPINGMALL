@@ -5,9 +5,7 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 class DetailPage extends StatelessWidget {
   final Album album; // Album 객체를 받기 위한 변수
   final List<Album> cartItems; // 장바구니 아이템을 받기 위한 변수 추가
-
   const DetailPage({super.key, required this.album, required this.cartItems});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,9 +60,10 @@ class DetailPage extends StatelessWidget {
               onPressed: () {
                 // 장바구니에 동일한 앨범이 있는지 확인
                 bool albumExists = false;
-                for (var item in cartItems) {
-                  if (item.song == album.song && item.artist == album.artist) {
-                    item.quantity++; // 동일한 앨범이 있으면 수량 증가
+                for (var i = 0; i < cartItems.length; i++) {
+                  if (cartItems[i].song == album.song &&
+                      cartItems[i].artist == album.artist) {
+                    cartItems[i].quantity++; // 동일한 앨범이 있으면 수량 증가
                     albumExists = true;
                     break;
                   }
@@ -80,7 +79,6 @@ class DetailPage extends StatelessWidget {
                     quantity: 1,
                   ));
                 }
-
                 // 장바구니에 담는 기능
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(

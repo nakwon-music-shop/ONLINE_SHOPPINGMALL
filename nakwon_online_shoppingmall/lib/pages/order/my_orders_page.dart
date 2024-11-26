@@ -9,7 +9,7 @@ class MyOrdersPage extends StatefulWidget {
   //앨범객체와 앨범객체의 수를 int로 받기
   final List<Map<Album, int>> albums;
 
-  MyOrdersPage({this.albums = const []});
+  MyOrdersPage({this.albums = const [], required List<Album> orderItems});
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
