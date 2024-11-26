@@ -6,16 +6,8 @@ import 'package:nakwon_online_shoppingmall/pages/order/widgets/order_box.dart';
 
 //구매목록 페이지
 class MyOrdersPage extends StatefulWidget {
-  //앨범객체와 앨범객체의 수를 int로 받기
-  //final List<Map<Album, int>> albums;
-
-  //MyOrdersPage({this.albums = const []});
-
-  //const MyOrdersPage({super.key, required List<Map<Album, int>> albums});
 
   const MyOrdersPage({super.key});
-
-  //final albums = globalAlbums;
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
