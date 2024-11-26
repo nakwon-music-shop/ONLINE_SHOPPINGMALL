@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 
-// DetailPage 클래스 정의, Album 객체와 장바구니 아이템 리스트를 받음
 class DetailPage extends StatelessWidget {
   final Album album; // Album 객체를 받기 위한 변수
-  final List<Album> cartItems; // 장바구니 아이템 리스트
+  final List<Album> cartItems; // 장바구니 아이템을 받기 위한 변수 추가
 
-  // DetailPage 생성자, album과 cartItems를 필수로 받음
   const DetailPage({super.key, required this.album, required this.cartItems});
 
   @override
@@ -16,29 +14,24 @@ class DetailPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'NakWon',
-          style: TextStyle(color: Colors.white), // AppBar의 글자 색상 설정
+          style: TextStyle(
+              fontFamily: "Inter-Italic",
+              fontWeight: FontWeight.w100,
+              color: Colors.white), // AppBar의 글자 색상 설정
         ),
         backgroundColor: Colors.black, // AppBar의 배경 색상 설정
         centerTitle: true, // 제목의 위치를 가운데로 설정
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart,
-                color: Colors.white), // 아이콘 색상 수정
+            icon: const Icon(Icons.shopping_cart), // 장바구니 아이콘 설정
             onPressed: () {
               // 장바구니 페이지로 이동하는 코드
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ShoppingCartPage(cartItems: [
-                    {
-                      'imagePath': album.imagePath,
-                      'song': album.song,
-                      'artist': album.artist,
-                      'price': album.price
-                    }
-                  ]),
-                ),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ShoppingCartPage(
+                            cartItems: [],
+                          )));
             },
           ),
         ],
@@ -67,28 +60,21 @@ class DetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                cartItems.add(album); // 장바구니에 아이템 추가
+                cartItems.add(album); // 장바구니에 앨범 추가
+                // 장바구니에 담는 기능
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
                     content: Text('장바구니에 담겼습니다'),
                   ),
-                ); // 장바구니에 담겼음을 사용자에게 알림
+                );
               },
-              child: const Text('장바구니에 담기'), // 버튼 텍스트 설정
+              child: const Text('장바구니에 담기'),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
               album.artist, // 가수 이름 표시
-              style: const TextStyle(fontSize: 18), // 가수 이름 스타일 설정
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              album.description, // 상세 설명 텍스트 표시
-              style: const TextStyle(fontSize: 16), // 상세 설명 텍스트 스타일 설정
             ),
           ),
         ],
