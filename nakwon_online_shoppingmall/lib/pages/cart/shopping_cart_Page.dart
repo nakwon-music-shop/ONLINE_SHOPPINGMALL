@@ -148,20 +148,26 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20), // 카드 여백
                           child: ListTile(
-                            leading: item.imagePath.isNotEmpty // 왼쪽 이미지
-                                ? Image.file(
-                                    File(item
-                                        .imagePath), // 링크를 사용할 경우 network로 바꿔서 사용
-                                    width: 50,
-                                    height: 50,
-                                    fit: BoxFit.cover)
+                            leading: item.imagePath.isNotEmpty
+                                ? item.imagePath.startsWith('assets')
+                                    ? Image.asset(
+                                        item.imagePath,
+                                        width: 50,
+                                        height: 50,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.file(
+                                        File(item.imagePath),
+                                        width: 50,
+                                        height: 50,
+                                        fit: BoxFit.cover,
+                                      )
                                 : const Icon(
-                                    // 이미지 파일이 없을 경우
                                     Icons.photo,
                                     size: 50,
                                     color: Colors.grey,
                                   ),
-                            title: Text(item.song),
+                            title: Text('${item.song} - ${item.artist}'),
                             subtitle: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
