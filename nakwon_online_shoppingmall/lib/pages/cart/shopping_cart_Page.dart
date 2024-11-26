@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/order/my_orders_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/order/saved_order.dart';
 //AppBar, Column(CartList), ElevatedButton으로 구성
 //기본 폰트 : 16 + grey[700], padding 좌우로 20
 //AppBar (폰트 : Blackitalic + black)
@@ -75,18 +76,26 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
             ),
             CupertinoDialogAction(
               onPressed: () {
+                for (var item in cartItems) {
+                  // 이미 있는 상품이면 수량을 더하고, 없으면 새로 추가
+                  bool exists = false;
+                  for (var albumEntry in globalAlbums) {
+                    if (albumEntry.keys.first == item) {
+                      albumEntry[item] = albumEntry[item]! + item.quantity;
+                      exists = true;
+                      break;
+                    }
+                  }
+                  if (!exists) {
+                    globalAlbums.add({item: item.quantity});
+                  }
+                }
                 Navigator.pop(context); // 다이얼로그 닫기
                 Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyOrdersPage(
-                      albums: cartItems.map((album) {
-                        return {
-                          album: album.quantity
-                        }; // Album 객체와 수량을 Map으로 변환
-                      }).toList(),
-                    ),
+                    builder: (context) => MyOrdersPage(),
                   ),
                 );
                 // 쇼핑 카트 페이지 닫기
