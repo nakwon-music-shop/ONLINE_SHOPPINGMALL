@@ -58,7 +58,7 @@ Widget createOrderBox(Album album, int quantity) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('${album.price}원'),
+                        Text('${album.price*quantity}원'),
                         Text('${quantity}개'),
                         Text('결제완료'),
                       ],

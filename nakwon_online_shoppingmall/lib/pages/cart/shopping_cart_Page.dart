@@ -81,7 +81,11 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyOrdersPage(
-                      orderItems: cartItems,
+                      albums: cartItems.map((album) {
+                        return {
+                          album: album.quantity
+                        }; // Album 객체와 수량을 Map으로 변환
+                      }).toList(),
                     ),
                   ),
                 );
