@@ -4,6 +4,7 @@ class Album {
   final String artist;
   final int price;
   final String description;
+  int quantity; // quantity 필드 추가
 
   Album({
     required this.imagePath,
@@ -11,5 +12,6 @@ class Album {
     required this.artist,
     required this.price,
     required this.description,
+    this.quantity = 1, // 기본값 1로 설정
   });
 }

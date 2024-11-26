@@ -41,13 +41,19 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
 
   void decreaseQuantity(int index) {
     setState(() {
-      cartItems[index] = Album(
-        imagePath: cartItems[index].imagePath,
-        song: cartItems[index].song,
-        artist: cartItems[index].artist,
-        price: cartItems[index].price,
-        description: cartItems[index].description,
-      );
+      // 현재 수량을 확인하고, 1 이상이면 수량을 줄이고 아니면 리스트에서 제거합니다.
+      if (cartItems[index].quantity > 1) {
+        cartItems[index] = Album(
+          imagePath: cartItems[index].imagePath,
+          song: cartItems[index].song,
+          artist: cartItems[index].artist,
+          price: cartItems[index].price,
+          description: cartItems[index].description,
+          quantity: cartItems[index].quantity - 1, // 수량 감소
+        );
+      } else {
+        cartItems.removeAt(index); // 수량이 1 이하일 경우 아이템 제거
+      }
     });
   }
 
