@@ -5,6 +5,7 @@ import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page_List.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/widgets/image_box.dart';
+import 'package:nakwon_online_shoppingmall/pages/order/my_orders_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var fnumber = NumberFormat('###,###,###,###');
+  var fnumber = NumberFormat('###,###,###,###원');
   final List<Album> cartItems = [];
   String inputText = ""; // 검색 입력을 저장할 변수
 
@@ -92,7 +93,9 @@ class _HomePageState extends State<HomePage> {
     return FloatingActionButton(
       onPressed: () {},
       backgroundColor: Colors.white,
+      shape: Border.all(width: 3),
       child: PopupMenuButton(
+        shape: Border.all(width: 3),
           color: Colors.white,
           child: Icon(Icons.add),
           itemBuilder: (context) => <PopupMenuEntry>[
@@ -110,7 +113,7 @@ class _HomePageState extends State<HomePage> {
                 PopupMenuItem(
                   onTap: () async {
                     final returnAlbum = await Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => RegistPage()));
+                        MaterialPageRoute(builder: (context) => MyOrdersPage()));
                     album.add(returnAlbum);
                   },
                   child: ListTile(
@@ -152,7 +155,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
-                      width: 80,
+                      width: 60,
                       height: 80,
                       child: ImageBox(currentAlbum.imagePath)),
                   SizedBox(
