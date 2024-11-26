@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -122,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(
                     builder: (context) => DetailPage(
                           album: album[i],
-                          cartItems: cartItems,
+                          cartItems: cartItems, // cartItems 전달
                         )));
           },
           child: SizedBox(
