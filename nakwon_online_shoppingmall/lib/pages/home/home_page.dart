@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
           a.artist.toLowerCase().contains(inputText.toLowerCase());
     }).toList();
 
-    print(filteredAlbums.last.artist);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -105,10 +104,10 @@ class _HomePageState extends State<HomePage> {
                     final returnAlbum = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => RegistPage()));
                     if (returnAlbum != null) {
-                    setState(() {
-                      album.add(returnAlbum);
-                    });
-                  }
+                      setState(() {
+                        album.add(returnAlbum);
+                      });
+                    }
                   },
                   child: ListTile(
                     leading: Icon(Icons.add),
