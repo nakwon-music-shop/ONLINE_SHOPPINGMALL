@@ -29,8 +29,15 @@ class DetailPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        ShoppingCartPage(cartItems: cartItems)),
+                  builder: (context) => ShoppingCartPage(cartItems: [
+                    {
+                      'imagePath': album.imagePath,
+                      'song': album.song,
+                      'artist': album.artist,
+                      'price': album.price
+                    }
+                  ]),
+                ),
               );
             },
           ),

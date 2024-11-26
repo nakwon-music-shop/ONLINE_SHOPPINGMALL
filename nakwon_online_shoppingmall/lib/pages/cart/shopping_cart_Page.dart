@@ -9,7 +9,7 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 //TODO 담은 상품 수량 가져오기
 
 class ShoppingCartPage extends StatefulWidget {
-  final List<Album> cartItems; // 인자로 받는 cartItems 정의
+  final List<Map<String, dynamic>> cartItems; // 인자로 받는 cartItems 정의
 
   const ShoppingCartPage({super.key, required this.cartItems}); // 생성자에서 인자 받기
 
@@ -18,15 +18,21 @@ class ShoppingCartPage extends StatefulWidget {
 }
 
 class ShoppingCartState extends State<ShoppingCartPage> {
-  final List<Map<String, dynamic>> cartItems = [
-    //상품을 담을 리스트
-    {
-      'image': null, //이미지가 있는 경우 링크
-      'title': '페퍼톤스 - 행운을 빌어요',
-      'price': 30000,
-      'quantity': 1,
-    },
-  ];
+  late List<Map<String, dynamic>> cartItems;
+
+  @override
+  void initState() {
+    super.initState();
+    cartItems = widget.cartItems
+        .map((item) => {
+              'imagePath': item['imagePath'],
+              'song': item['song'],
+              'artist': item['artist'],
+              'price': item['price'],
+              'quantity': 1,
+            })
+        .toList();
+  }
 
   void increaseQuantity(int index) {
     //수량 증가
@@ -67,7 +73,7 @@ class ShoppingCartState extends State<ShoppingCartPage> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.pop(context); // 다이얼로그 닫기
+                Navigator.pop(context); //다이얼로그 닫기
               },
               child: const Text(
                 '취소',
@@ -76,8 +82,13 @@ class ShoppingCartState extends State<ShoppingCartPage> {
             ),
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.pop(context); // 다이얼로그 닫기
-                Navigator.pop(context);
+                Navigator.pop(context); //다이얼로그 닫기
+                Navigator.pushNamedAndRemoveUntil(
+                  //홈페이지로 이동
+                  context,
+                  '/', //홈페이지 라우트 이름
+                  (route) => false,
+                );
               },
               child: const Text(
                 '구매하기',
@@ -98,6 +109,7 @@ class ShoppingCartState extends State<ShoppingCartPage> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         //앱바
+        iconTheme: IconThemeData(color: Colors.white), // 뒤로가기 버튼 색상 변경
         title: Text(
           'Cart',
           style: TextStyle(
