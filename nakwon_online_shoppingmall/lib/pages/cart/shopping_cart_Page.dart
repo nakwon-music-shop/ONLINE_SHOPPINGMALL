@@ -10,7 +10,7 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 //TODO 담은 상품 수량 가져오기
 
 class ShoppingCartPage extends StatefulWidget {
-  final List<Album> cartItems; // 인자로 받는 cartItems 정의
+  final List<Map<String, dynamic>> cartItems; // 인자로 받는 cartItems 정의
 
   const ShoppingCartPage({super.key, required this.cartItems}); // 생성자에서 인자 받기
 
@@ -24,6 +24,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   @override
   void initState() {
     super.initState();
+
     cartItems = widget.cartItems; // 생성자로 받은 cartItems를 상태 변수로 설정
   }
 
@@ -77,7 +78,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
           actions: [
             CupertinoDialogAction(
               onPressed: () {
-                Navigator.pop(context); // 다이얼로그 닫기
+                Navigator.pop(context); //다이얼로그 닫기
               },
               child: const Text(
                 '취소',
@@ -107,6 +108,8 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        //앱바
+        iconTheme: IconThemeData(color: Colors.white), // 뒤로가기 버튼 색상 변경
         title: Text(
           'Cart',
           style: TextStyle(
