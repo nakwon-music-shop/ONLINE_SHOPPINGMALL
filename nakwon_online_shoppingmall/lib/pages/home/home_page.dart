@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   child: ListTile(
                     leading: Icon(Icons.add),
-                    title: Text('Add'),
+                    title: Text('상품 등록'),
                   ),
                 ),
                 PopupMenuItem(
