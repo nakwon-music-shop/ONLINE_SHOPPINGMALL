@@ -5,31 +5,44 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 class DetailPage extends StatelessWidget {
   final Album album; // Album 객체를 받기 위한 변수
   final List<Album> cartItems; // 장바구니 아이템을 받기 위한 변수 추가
+
   const DetailPage({super.key, required this.album, required this.cartItems});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: Colors.white), // 뒤로가기 버튼 색상 화이트로 설정
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: Text(
           'NakWon',
           style: TextStyle(
-              fontFamily: "Inter-Italic",
-              fontWeight: FontWeight.w100,
-              color: Colors.white), // AppBar의 글자 색상 설정
+            fontFamily: "Inter-Italic",
+            fontWeight: FontWeight.w100,
+            color: Colors.white,
+          ),
         ),
         backgroundColor: Colors.black, // AppBar의 배경 색상 설정
         centerTitle: true, // 제목의 위치를 가운데로 설정
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart), // 장바구니 아이콘 설정
+            icon: Icon(Icons.shopping_cart,
+                color: Colors.white), // 장바구니 아이콘 색상 화이트로 설정
             onPressed: () {
               // 장바구니 페이지로 이동하는 코드
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ShoppingCartPage(
-                            cartItems: cartItems,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ShoppingCartPage(
+                    cartItems: cartItems,
+                  ),
+                ),
+              );
             },
           ),
         ],
@@ -43,7 +56,9 @@ class DetailPage extends StatelessWidget {
             child: Text(
               album.song,
               style: const TextStyle(
-                  fontSize: 24, fontWeight: FontWeight.bold), // 제목 스타일 설정
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ), // 제목 스타일 설정
             ),
           ),
           Padding(
@@ -51,7 +66,9 @@ class DetailPage extends StatelessWidget {
             child: Text(
               '₩${album.price}',
               style: const TextStyle(
-                  fontSize: 20, color: Colors.green), // 가격 스타일 설정
+                fontSize: 20,
+                color: Colors.green,
+              ), // 가격 스타일 설정
             ),
           ),
           Padding(
@@ -63,7 +80,14 @@ class DetailPage extends StatelessWidget {
                 for (var i = 0; i < cartItems.length; i++) {
                   if (cartItems[i].song == album.song &&
                       cartItems[i].artist == album.artist) {
-                    cartItems[i].quantity++; // 동일한 앨범이 있으면 수량 증가
+                    cartItems[i] = Album(
+                      imagePath: cartItems[i].imagePath,
+                      song: cartItems[i].song,
+                      artist: cartItems[i].artist,
+                      price: cartItems[i].price,
+                      description: cartItems[i].description,
+                      quantity: cartItems[i].quantity + 1, // 수량 증가
+                    );
                     albumExists = true;
                     break;
                   }
@@ -79,6 +103,7 @@ class DetailPage extends StatelessWidget {
                     quantity: 1,
                   ));
                 }
+
                 // 장바구니에 담는 기능
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
@@ -92,7 +117,7 @@ class DetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              album.artist, // 가수 이름 표시
+              album.artist,
             ),
           ),
         ],
