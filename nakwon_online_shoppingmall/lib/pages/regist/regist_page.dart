@@ -3,6 +3,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/background_photo.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/info_textField.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/jaket_photo_button.dart';
+import 'package:nakwon_online_shoppingmall/pages/regist/widgets/price_textField.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/widgets/regist_button.dart';
 
 class RegistPage extends StatefulWidget {
@@ -77,7 +78,7 @@ class _RegistPageState extends State<RegistPage> {
                   onTextChanged: onSongChanged,
                 ),
                 // 상품 가격 입력 영역
-                InfoTextfield(
+                PriceTextfield(
                   data: '상품 가격',
                   textFieldResult: widget.price,
                   onTextChanged: onPriceChanged,
