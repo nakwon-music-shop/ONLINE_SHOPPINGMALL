@@ -17,9 +17,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var fnumber = NumberFormat('###,###,###,###');
   final List<Album> cartItems = [];
+  String inputText = ""; // 검색 입력을 저장할 변수
 
   @override
   Widget build(BuildContext context) {
+    // 검색 입력에 따라 앨범 필터링
+    List<Album> filteredAlbums = album.where((a) {
+      return a.song.toLowerCase().contains(inputText.toLowerCase()) ||
+          a.artist.toLowerCase().contains(inputText.toLowerCase());
+    }).toList();
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -56,8 +62,8 @@ class _HomePageState extends State<HomePage> {
                         Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              for (int i = 0; i < album.length; i++)
-                                productBox(i),
+                              for (int i = 0; i < filteredAlbums.length; i++)
+                                productBox(filteredAlbums, i),
                             ])
                       ],
                     ),
@@ -104,7 +110,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Padding productBox(int i) {
+  Padding productBox(List<Album> filteredAlbums, int i) {
+    Album currentAlbum = filteredAlbums[i]; // 필터링된 앨범 사용
     return Padding(
       padding: const EdgeInsets.all(10),
       child: Container(
@@ -138,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                       height: 80,
                       child: FittedBox(
                           fit: BoxFit.fill,
-                          child: Image.file(File(album[i].imagePath)))),
+                          child: Image.file(File(currentAlbum.imagePath)))),
                   SizedBox(
                     width: 200,
                     child: Padding(
@@ -149,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                             height: 28,
                             child: FittedBox(
                               child: Text(
-                                album[i].song,
+                                currentAlbum.song,
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
                             ),
@@ -166,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                                     SizedBox(
                                       width: 100,
                                       child: Text(
-                                        album[i].artist,
+                                        currentAlbum.artist,
                                         style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),
@@ -174,7 +181,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     Text(
-                                      fnumber.format(album[i].price),
+                                      fnumber.format(currentAlbum.price),
                                       style: TextStyle(
                                           fontSize: 15,
                                           fontWeight: FontWeight.bold),
@@ -211,6 +218,10 @@ class _HomePageState extends State<HomePage> {
           backgroundColor: WidgetStatePropertyAll(Colors.white),
           side: WidgetStateProperty.all(
               BorderSide(color: Colors.black, width: 5)),
+          onSubmitted: (value) {
+            setState(() => inputText = value);
+            print("$value");
+          },
         ));
   }
 }
