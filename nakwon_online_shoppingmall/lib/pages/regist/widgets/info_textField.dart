@@ -40,6 +40,8 @@ class _InfoTextfieldState extends State<InfoTextfield> {
               widget.onTextChanged(textController);
             },
             decoration: InputDecoration(
+                labelText: widget.data,
+                labelStyle: TextStyle(color: Colors.grey[500]),
                 enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide:
