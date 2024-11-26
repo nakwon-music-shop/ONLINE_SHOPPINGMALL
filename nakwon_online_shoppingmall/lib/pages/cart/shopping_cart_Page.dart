@@ -35,6 +35,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
         artist: cartItems[index].artist,
         price: cartItems[index].price,
         description: cartItems[index].description,
+        quantity: cartItems[index].quantity + 1, // 수량 증가
       );
     });
   }
