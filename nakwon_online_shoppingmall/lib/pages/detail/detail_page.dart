@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
+import 'package:nakwon_online_shoppingmall/pages/detail/widgets/detail_image_box.dart';
 
 class DetailPage extends StatelessWidget {
   final Album album; // Album 객체를 받기 위한 변수
@@ -50,7 +51,10 @@ class DetailPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // 요소들을 왼쪽 정렬
         children: [
-          Image.network(album.imagePath), // 앨범 커버 이미지 표시
+          Container(
+              width: 350,
+              height: 500,
+              child: DetailImageBox(album.imagePath)), // 앨범 커버 이미지 표시
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
