@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/home/home_page_List.dart';
 import 'package:nakwon_online_shoppingmall/pages/order/widgets/order_box.dart';
 
 //구매목록 페이지
 class MyOrdersPage extends StatefulWidget {
-  final List<Album> albums;
+  //앨범객체와 앨범객체의 수를 int로 받기
+  final List<Map<Album, int>> albums;
 
   MyOrdersPage({this.albums = const []});
 
@@ -29,7 +31,10 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
         actions: [
           //appBar 홈페이지 이동 버튼
           IconButton(
-            icon: const Icon(Icons.home), // 홈 아이콘
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+            ), // 홈 아이콘
             onPressed: () {
               // HomePage로 이동
               Navigator.pushAndRemoveUntil(
@@ -56,7 +61,10 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                     child: ListView.builder(
                         itemCount: widget.albums.length,
                         itemBuilder: (context, index) {
-                          return createOrderBox(widget.albums[index]);
+                          final albumEntry = widget.albums[index];
+                          final album = albumEntry.keys.first;
+                          final quantity = albumEntry.values.first;
+                          return createOrderBox(album, quantity);
                         }))
               ],
             ),
