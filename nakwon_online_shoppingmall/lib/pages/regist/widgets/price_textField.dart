@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class InfoTextfield extends StatefulWidget {
+class PriceTextfield extends StatefulWidget {
   String data;
   var textFieldResult;
   void Function(TextEditingController tec) onTextChanged;
 
-  InfoTextfield(
+  PriceTextfield(
       {super.key,
       required this.data,
       required this.textFieldResult,
       required this.onTextChanged});
 
   @override
-  State<InfoTextfield> createState() => _InfoTextfieldState();
+  State<PriceTextfield> createState() => _PriceTextfieldState();
 }
 
-class _InfoTextfieldState extends State<InfoTextfield> {
+class _PriceTextfieldState extends State<PriceTextfield> {
   TextEditingController textController = TextEditingController();
 
   @override
@@ -35,6 +36,10 @@ class _InfoTextfieldState extends State<InfoTextfield> {
             height: 10,
           ),
           TextField(
+            keyboardType: TextInputType.number,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+            ],
             controller: textController,
             onChanged: (value) {
               widget.onTextChanged(textController);
