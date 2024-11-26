@@ -14,9 +14,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore.instance.collection('albums').get().then((value) {
-      print(value.docs.length);
-    });
     return MaterialApp(
       title: 'Nakwon',
       theme: theme,
