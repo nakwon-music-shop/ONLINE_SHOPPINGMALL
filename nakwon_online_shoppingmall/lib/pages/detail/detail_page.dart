@@ -99,7 +99,7 @@ class DetailPage extends StatelessWidget {
             ),
             Spacer(), // 여유 공간 추가
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(20.0),
               child: SizedBox(
                 width: double.infinity, // 버튼을 가능한 최대 너비로 설정
                 child: ElevatedButton(
