@@ -10,7 +10,7 @@ import 'package:nakwon_online_shoppingmall/album.dart';
 //TODO 담은 상품 수량 가져오기
 
 class ShoppingCartPage extends StatefulWidget {
-  final List<Map<String, dynamic>> cartItems; // 인자로 받는 cartItems 정의
+  final List<Album> cartItems; // 인자로 받는 cartItems 정의
 
   const ShoppingCartPage({super.key, required this.cartItems}); // 생성자에서 인자 받기
 
