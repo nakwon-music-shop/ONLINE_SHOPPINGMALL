@@ -19,6 +19,13 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon:
+              Icon(Icons.arrow_back, color: Colors.white), // 뒤로가기 버튼 색상 화이트로 설정
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         title: const Text(
           'My Orders',
           style: TextStyle(
