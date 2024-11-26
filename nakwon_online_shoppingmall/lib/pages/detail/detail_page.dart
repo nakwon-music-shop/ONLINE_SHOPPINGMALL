@@ -52,9 +52,15 @@ class DetailPage extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(
+              height: 60,
+            ),
+            SizedBox(
                 width: 350,
-                height: 500,
+                height: 350,
                 child: DetailImageBox(album.imagePath)), // 앨범 커버 이미지 표시
+            SizedBox(
+              height: 30,
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
