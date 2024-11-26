@@ -30,7 +30,7 @@ class DetailPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => ShoppingCartPage(
-                            cartItems: [],
+                            cartItems: cartItems,
                           )));
             },
           ),
@@ -60,7 +60,27 @@ class DetailPage extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
               onPressed: () {
-                cartItems.add(album); // 장바구니에 앨범 추가
+                // 장바구니에 동일한 앨범이 있는지 확인
+                bool albumExists = false;
+                for (var item in cartItems) {
+                  if (item.song == album.song && item.artist == album.artist) {
+                    item.quantity++; // 동일한 앨범이 있으면 수량 증가
+                    albumExists = true;
+                    break;
+                  }
+                }
+                if (!albumExists) {
+                  // 동일한 앨범이 없으면 새로운 앨범 추가
+                  cartItems.add(Album(
+                    imagePath: album.imagePath,
+                    song: album.song,
+                    artist: album.artist,
+                    price: album.price,
+                    description: album.description,
+                    quantity: 1,
+                  ));
+                }
+
                 // 장바구니에 담는 기능
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
