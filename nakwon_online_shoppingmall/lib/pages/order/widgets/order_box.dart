@@ -1,8 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 
-Widget createOrderBox(Album album) {
+Widget createOrderBox(Album album, int quantity) {
   try {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -60,6 +59,7 @@ Widget createOrderBox(Album album) {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text('${album.price}원'),
+                        Text('${quantity}개'),
                         Text('결제완료'),
                       ],
                     ),
