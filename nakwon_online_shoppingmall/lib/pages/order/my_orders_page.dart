@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
+import 'package:nakwon_online_shoppingmall/pages/order/saved_order.dart';
 import 'package:nakwon_online_shoppingmall/pages/order/widgets/order_box.dart';
 
 //구매목록 페이지
 class MyOrdersPage extends StatefulWidget {
   //앨범객체와 앨범객체의 수를 int로 받기
-  final List<Map<Album, int>> albums;
+  //final List<Map<Album, int>> albums;
 
-  MyOrdersPage({this.albums = const []});
+  //MyOrdersPage({this.albums = const []});
+
+  //const MyOrdersPage({super.key, required List<Map<Album, int>> albums});
+
+  const MyOrdersPage({super.key});
+
+  //final albums = globalAlbums;
 
   @override
   State<MyOrdersPage> createState() => _MyOrdersPageState();
@@ -53,7 +60,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
         ],
       ),
       //구매목록이 비었는지 확인
-      body: widget.albums.isEmpty
+      body: globalAlbums.isEmpty
           //비어있을 경우 텍스트 출력
           ? Center(
               child: const Text('구매목록이 없습니다.',
@@ -65,9 +72,9 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
               children: [
                 Expanded(
                     child: ListView.builder(
-                        itemCount: widget.albums.length,
+                        itemCount: globalAlbums.length,
                         itemBuilder: (context, index) {
-                          final albumEntry = widget.albums[index];
+                          final albumEntry = globalAlbums[index];
                           final album = albumEntry.keys.first;
                           final quantity = albumEntry.values.first;
                           return createOrderBox(album, quantity);
