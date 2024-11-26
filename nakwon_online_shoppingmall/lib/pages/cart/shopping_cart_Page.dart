@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
+import 'package:nakwon_online_shoppingmall/pages/order/my_orders_page.dart';
 //AppBar, Column(CartList), ElevatedButton으로 구성
 //기본 폰트 : 16 + grey[700], padding 좌우로 20
 //AppBar (폰트 : Blackitalic + black)
@@ -30,14 +31,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
 
   void increaseQuantity(int index) {
     setState(() {
-      cartItems[index] = Album(
-        imagePath: cartItems[index].imagePath,
-        song: cartItems[index].song,
-        artist: cartItems[index].artist,
-        price: cartItems[index].price,
-        description: cartItems[index].description,
-        quantity: cartItems[index].quantity + 1, // 수량 증가
-      );
+      cartItems[index].quantity++;
     });
   }
 
@@ -45,14 +39,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
     setState(() {
       // 현재 수량을 확인하고, 1 이상이면 수량을 줄이고 아니면 리스트에서 제거합니다.
       if (cartItems[index].quantity > 1) {
-        cartItems[index] = Album(
-          imagePath: cartItems[index].imagePath,
-          song: cartItems[index].song,
-          artist: cartItems[index].artist,
-          price: cartItems[index].price,
-          description: cartItems[index].description,
-          quantity: cartItems[index].quantity - 1, // 수량 감소
-        );
+        cartItems[index].quantity--;
       } else {
         cartItems.removeAt(index); // 수량이 1 이하일 경우 아이템 제거
       }
@@ -68,7 +55,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   void showPurchaseDialog() {
     int total = 0;
     for (var item in cartItems) {
-      total += item.price;
+      total += item.price * item.quantity; //총 가격 계산
     }
 
     showCupertinoDialog(
@@ -89,7 +76,16 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
             CupertinoDialogAction(
               onPressed: () {
                 Navigator.pop(context); // 다이얼로그 닫기
-                Navigator.pop(context); // 쇼핑 카트 페이지 닫기
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyOrdersPage(
+                      orderItems: cartItems,
+                    ),
+                  ),
+                );
+                // 쇼핑 카트 페이지 닫기
               },
               child: const Text(
                 '구매하기',
@@ -143,7 +139,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                           color: Colors.white,
                           shape: RoundedRectangleBorder(
                               side: const BorderSide(
-                                  color: Colors.black38, width: 1),
+                                  color: Colors.black, width: 3),
                               borderRadius: BorderRadius.circular(10)),
                           margin: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 20), // 카드 여백
@@ -169,7 +165,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                                   onPressed: () => decreaseQuantity(index),
                                   icon: const Icon(Icons.remove),
                                 ),
-                                Text('${1}'), // 수량
+                                Text('${item.quantity}'), // 수량
                                 IconButton(
                                   onPressed: () => increaseQuantity(index),
                                   icon: const Icon(Icons.add),
@@ -190,7 +186,8 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                                   ),
                                   Align(
                                     alignment: Alignment.bottomRight,
-                                    child: Text('${item.price}원'),
+                                    child:
+                                        Text('${item.price * item.quantity}원'),
                                   ),
                                 ],
                               ),
