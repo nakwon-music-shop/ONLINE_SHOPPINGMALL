@@ -1,10 +1,10 @@
-import 'dart:io';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/cart/shopping_cart_Page.dart';
 import 'package:nakwon_online_shoppingmall/pages/detail/detail_page.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page_List.dart';
+import 'package:nakwon_online_shoppingmall/pages/home/widgets/image_box.dart';
 import 'package:nakwon_online_shoppingmall/pages/regist/regist_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,6 +26,7 @@ class _HomePageState extends State<HomePage> {
       return a.song.toLowerCase().contains(inputText.toLowerCase()) ||
           a.artist.toLowerCase().contains(inputText.toLowerCase());
     }).toList();
+    print(filteredAlbums[0].artist);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -138,14 +139,14 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(color: Colors.black, width: 1),
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20)),
                       width: 80,
                       height: 80,
-                      child: FittedBox(
-                          fit: BoxFit.fill,
-                          child: Image.file(File(currentAlbum.imagePath)))),
+                      child: ImageBox(currentAlbum.imagePath)),
+                  SizedBox(
+                    width: 20,
+                  ),
                   SizedBox(
                     width: 200,
                     child: Padding(
