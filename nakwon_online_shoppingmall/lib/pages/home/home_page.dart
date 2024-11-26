@@ -58,16 +58,27 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   search_bar(),
                   Expanded(
-                    child: ListView(
-                      children: [
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                    child: filteredAlbums.isEmpty
+                        ? Center(
+                            child: Text(
+                              '데이터가 없음',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        : ListView(
                             children: [
-                              for (int i = 0; i < filteredAlbums.length; i++)
-                                productBox(filteredAlbums, i),
-                            ])
-                      ],
-                    ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  for (int i = 0;
+                                      i < filteredAlbums.length;
+                                      i++)
+                                    productBox(filteredAlbums, i),
+                                ],
+                              )
+                            ],
+                          ),
                   ),
                 ],
               )),
