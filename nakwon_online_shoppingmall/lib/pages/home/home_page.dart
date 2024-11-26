@@ -27,7 +27,8 @@ class _HomePageState extends State<HomePage> {
       return a.song.toLowerCase().contains(inputText.toLowerCase()) ||
           a.artist.toLowerCase().contains(inputText.toLowerCase());
     }).toList();
-    
+
+    print(filteredAlbums.last.artist);
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -103,7 +104,11 @@ class _HomePageState extends State<HomePage> {
                   onTap: () async {
                     final returnAlbum = await Navigator.push(context,
                         MaterialPageRoute(builder: (context) => RegistPage()));
-                    album.add(returnAlbum);
+                    if (returnAlbum != null) {
+                    setState(() {
+                      album.add(returnAlbum);
+                    });
+                  }
                   },
                   child: ListTile(
                     leading: Icon(Icons.add),
@@ -157,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20)),
-                      width: 80,
+                      width: 60,
                       height: 80,
                       child: ImageBox(currentAlbum.imagePath)),
                   SizedBox(
@@ -188,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: 100,
+                                      width: 110,
                                       child: Text(
                                         currentAlbum.artist,
                                         style: TextStyle(
@@ -200,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                                     Text(
                                       fnumber.format(currentAlbum.price),
                                       style: TextStyle(
-                                          fontSize: 15,
+                                          fontSize: 13,
                                           fontWeight: FontWeight.bold),
                                     )
                                   ],
@@ -237,7 +242,6 @@ class _HomePageState extends State<HomePage> {
               BorderSide(color: Colors.black, width: 5)),
           onSubmitted: (value) {
             setState(() => inputText = value);
-            print("$value");
           },
         ));
   }
