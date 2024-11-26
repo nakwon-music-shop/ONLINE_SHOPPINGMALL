@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       return a.song.toLowerCase().contains(inputText.toLowerCase()) ||
           a.artist.toLowerCase().contains(inputText.toLowerCase());
     }).toList();
-    print(filteredAlbums[0].artist);
+    
     return Scaffold(
       appBar: AppBar(
           title: Text(
