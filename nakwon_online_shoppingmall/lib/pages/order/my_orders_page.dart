@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 import 'package:nakwon_online_shoppingmall/pages/home/home_page.dart';
-import 'package:nakwon_online_shoppingmall/pages/home/home_page_List.dart';
 import 'package:nakwon_online_shoppingmall/pages/order/widgets/order_box.dart';
 
 //구매목록 페이지
