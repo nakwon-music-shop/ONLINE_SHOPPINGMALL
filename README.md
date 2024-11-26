@@ -12,6 +12,41 @@
 - 홍의정 : 상품 등록 페이지
 - 황성필 : 장바구니 페이지
 
+### 디렉토리 구조
+<details>
+  <summary> (Click!)디렉토리 구조 </summary>
+  📦lib  
+ ┣ 📂pages  
+  
+ ┃ ┣ 📂cart  (장바구니 페이지)  
+ ┃ ┃ ┣ 📜shopping_cart_Page.dart  
+ ┃ ┃ ┗ 📜shopping_cart_Page_List.dart  
+ ┃ ┣ 📂detail  (상품 상세 페이지)  
+ ┃ ┃ ┣ 📂widgets  
+ ┃ ┃ ┃ ┗ 📜detail_image_box.dart  
+ ┃ ┃ ┗ 📜detail_page.dart  
+ ┃ ┣ 📂home  (홈 페이지)  
+ ┃ ┃ ┣ 📂widgets  
+ ┃ ┃ ┃ ┗ 📜image_box.dart  
+ ┃ ┃ ┣ 📜home_page.dart  
+ ┃ ┃ ┗ 📜home_page_List.dart  
+ ┃ ┣ 📂order  (구매 목록 페이지)  
+ ┃ ┃ ┣ 📂widgets  
+ ┃ ┃ ┃ ┗ 📜order_box.dart  
+ ┃ ┃ ┣ 📜my_orders_page.dart  
+ ┃ ┃ ┗ 📜saved_order.dart  
+ ┃ ┗ 📂regist  (상품 등록 페이지)  
+ ┃ ┃ ┣ 📂widgets  
+ ┃ ┃ ┃ ┣ 📜background_photo.dart  
+ ┃ ┃ ┃ ┣ 📜info_textField.dart  
+ ┃ ┃ ┃ ┣ 📜jaket_photo_button.dart  
+ ┃ ┃ ┃ ┗ 📜regist_button.dart  
+ ┃ ┃ ┗ 📜regist_page.dart  
+ ┣ 📜album.dart  
+ ┣ 📜main.dart  
+ ┗ 📜theme.dart  
+</details>
+
 ## 💡 어떻게 사용하나요?
 (실행화면 gif)
 
