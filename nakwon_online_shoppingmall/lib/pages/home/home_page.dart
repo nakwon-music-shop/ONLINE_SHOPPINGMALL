@@ -148,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => DetailPage(
-                          album: album[i],
+                          album: filteredAlbums[i],
                           cartItems: cartItems, // cartItems 전달
                         )));
           },
