@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nakwon_online_shoppingmall/album.dart';
 
-Widget createOrderBox(Album album, int quantity) {
+Widget createOrderBox(Album album, int quantity, String dateNow) {
   try {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -38,7 +38,16 @@ Widget createOrderBox(Album album, int quantity) {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const SizedBox(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                            child: Text(
+                          dateNow,
+                          style: const TextStyle(fontSize: 12),
+                        ))
+                      ],
+                    ),
                     Row(
                       children: [
                         // 노래명 - 가수
@@ -58,7 +67,7 @@ Widget createOrderBox(Album album, int quantity) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        Text('${album.price*quantity}원'),
+                        Text('${album.price * quantity}원'),
                         Text('${quantity}개'),
                         Text('결제완료'),
                       ],

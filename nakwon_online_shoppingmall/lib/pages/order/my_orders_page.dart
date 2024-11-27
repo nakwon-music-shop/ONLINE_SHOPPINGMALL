@@ -69,7 +69,7 @@ class _MyOrdersPageState extends State<MyOrdersPage> {
                           final albumEntry = globalAlbums[index];
                           final album = albumEntry.keys.first;
                           final quantity = albumEntry.values.first;
-                          return createOrderBox(album, quantity);
+                          return createOrderBox(album, quantity,orderTime[index]);
                         }))
               ],
             ),

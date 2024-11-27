@@ -54,6 +54,8 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
   }
 
   void showPurchaseDialog() {
+    //현재 시간 나타내줄 객체 생성
+    DateTime dt = DateTime.now();
     int total = 0;
     for (var item in cartItems) {
       total += item.price * item.quantity; //총 가격 계산
@@ -87,7 +89,10 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                     }
                   }
                   if (!exists) {
+                    //상품 목록 추가
                     globalAlbums.add({item: item.quantity});
+                    //구매 시간 추가
+                    orderTime.add('${dt.year}.${dt.month}.${dt.day} ${dt.hour}:${dt.minute}:${dt.second}');
                   }
                 }
                 Navigator.pop(context); // 다이얼로그 닫기
